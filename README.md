@@ -1,5 +1,9 @@
 # vsrc2premaidaiについて
-VS-RC003(Vstone社製ロボット用制御ボード)をシリアルポート経由で、ROS上のプリメイドAIのgazeboを制御するためのパッケージです。
+VS-RC003(Vstone社製ロボット用制御ボード)をシリアルポート経由で接続し、gazebo(ROS)上のプリメイドAIをRobovieMaker2で制御するためのパッケージです。
+PCが2台(Win & Ubuntu)必要で、PCとPCをマイコン経由で繋ぐという、かなり無駄の多い構成です。(^^;A
+でも、動くとやっぱり楽しいです。RobovieMaker2でROS上のロボットを動かせるというのは、珍しいと思います。
+
+![ros2vsrc](http://dream-drive.net/images/robovie_ros.jpg "vsrc2premaidai")
 
 ## 準備するもの
 - Vstone社 VS-RC003/HV基板 16,500円(ロボットショップ)
@@ -8,7 +12,7 @@ VS-RC003(Vstone社製ロボット用制御ボード)をシリアルポート経�
   - https://www.amazon.co.jp/dp/B00K7YYFNM/ref=cm_sw_em_r_mt_dp_E2QmFbV1NJ0N9
 - Robovie-Maker2がインストールされたWindows PC
   - https://www.vstone.co.jp/products/vs_rc003hv/download.html
-- ROSがインストールされたUbuntu PC (gazeboが)
+- ROSがインストールされたUbuntu PC (18.04 & Melodic / gazeboが動くスペック)
   - http://wiki.ros.org/ja
 - chikutaさんのプリメイドAIパッケージ各種インストール
   - https://github.com/chikuta/premaidai_description
@@ -17,9 +21,14 @@ VS-RC003(Vstone社製ロボット用制御ボード)をシリアルポート経�
 
 # 使い方
 
+## 事前準備
+
+1. UbuntuPCへのROS(Melodic)のインストールおよび、chikutaさんのプリメイドAIパッケージ各種は事前にインストールを済ませてください。
+2. 本パッケージ(vsrc2premaidai)は、WindowsPCおよびUbuntuPC、どちらにもcloneしてください。
+
 ## RobovieMaker2とVS-RC003の初期化および設定
 
-1. vsrc_premaidai/ai.rpjをRoboviemaker2で開きます。
+1. vsrc_premaidai/ai.rpjをRobovieMaker2で開きます。
 2. VS-RC003を初期化したうえで、[プロジェクトの設定]→[CPUの設定]を選択します。
 3. [CPUの設定]より、[基本設定]の[CPU基本制御周期]を"10000usec"に変更します。
 4. [CPUの設定]より、[シリアル設定]の[CN6]を"コマンドポート"に変更します。
