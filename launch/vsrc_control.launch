@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- args -->
+  <arg name="gui" default="true" />
+  <arg name="robot" default="premaidai" />
+	<arg name="serialdev" default="/dev/ttyUSB0" /> <!-- VS-RC003を接続するシリアルポート -->
+
+  <!--include-->
+  <include file="$(find premaidai_gazebo)/launch/premaidai_empty_world.launch"/>
+
+  <!-- load robot -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find premaidai_description)/robots/$(arg robot).urdf.xacro'" />
+
+  <!-- joint state publisherは起動しない -->
+  <!--
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <remap from="/joint_states" to="/joint_command"/>
+    <param name="rate" value="5"/>
+  </node>
+  -->
+
+  <!-- シリアルポートからメモリマップを読み込んで、joint_stateに吐き出すノード -->
+	<node name="vsrc_connect_ai" pkg="vsrc2premaidai" type="vsrc_connect_ai" output="screen">
+		<param name="serialdev" value="$(arg serialdev)"/>
+	</node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+    <remap from="/joint_states" to="/joint_command"/>
+  </node>
+
+
+  <!-- load displays -->
+  <param name="use_gui" value="$(arg gui)"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find premaidai_description)/launch/display.rviz"/>
+</launch>
