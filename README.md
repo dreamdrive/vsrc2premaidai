@@ -38,12 +38,14 @@ RobovieMaker2でROS上のロボットを動かせるというのは、珍しい�
 ## VS-RC003とUbuntuPC(ROS)との接続(配線)
 
 接続は、シリアル変換ケーブルを用いて接続します。
-例の秋月のケーブルの場合、
+例のAmazonのケーブルの場合、
 - VS-RC003 CN6-P1(TXD1) ← USB-TTLケーブル 白
 - VS-RC003 CN6-P2(RXD1) ← USB-TTLケーブル 緑
 - VS-RC003 CN6-P10(GND) ← USB-TTLケーブル 黒
 
 USB/TTL変換ケーブルは、Ubuntu PCのUSB端子に接続します。
+
+![ros2vsrc](http://dream-drive.net/images/connect_vsrc.jpg "connect_vsrc")
 
 ## 実行方法
 
