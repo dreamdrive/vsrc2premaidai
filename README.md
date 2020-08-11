@@ -1,7 +1,7 @@
 # vsrc2premaidaiについて
 VS-RC003(Vstone社製ロボット用制御ボード)をシリアルポート経由で接続し、gazebo(ROS)上のプリメイドAIをRobovieMaker2で制御するためのパッケージです。
 PCが2台(Win & Ubuntu)必要で、PCとPCをマイコン経由で繋ぐという、かなり無駄の多い構成です。(^^;A
-でも、動くとやっぱり楽しいです。RobovieMaker2でROS上のロボットを動かせるというのは、珍しいと思います。
+RobovieMaker2でROS上のロボットを動かせるというのは、珍しいと思います。
 
 ![ros2vsrc](http://dream-drive.net/images/robovie_ros.jpg "vsrc2premaidai")
 
